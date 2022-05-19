@@ -33,7 +33,6 @@ public class Spin : MonoBehaviour
             bool is_a_number = Int32.TryParse(Input.inputString, out number);
             if (is_a_number && number >= 0 && number < 10)
             {
-                Debug.Log(number);
                 StartCoroutine(RotateToItem(number));
             }
         }
@@ -46,8 +45,6 @@ public class Spin : MonoBehaviour
 
         int ItemSize = 360 / Item.Length;
         int SpinRound = UnityEngine.Random.Range(SpinRoundRange[0], SpinRoundRange[1]);
-
-        Debug.Log(SpinRound);
 
         float Target = (SpinRound * 360) + ((ItemSize * Index) - (ItemSize / 2) + BackgroundDefaultRotage) - Start;
 
@@ -67,5 +64,15 @@ public class Spin : MonoBehaviour
             }
         }
 
+        Audio.Stop();
+
+        SelectItem(Index);
+
+        yield break;
+    }
+
+    void SelectItem(int Index)
+    {
+        Debug.Log("Bạn đã nhận được " + Item[Index-1] + "*" + Index);
     }
 }
