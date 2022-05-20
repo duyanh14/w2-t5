@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spin : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class Spin : MonoBehaviour
 
     AudioSource Audio;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         Audio = GetComponent<AudioSource>();
     }
-
 
     void Update()
     {
@@ -74,5 +79,8 @@ public class Spin : MonoBehaviour
     void SelectItem(int Index)
     {
         Debug.Log("Bạn đã nhận được " + Item[Index-1] + "*" + Index);
+
+        SceneManager.LoadScene("Level "+Index, LoadSceneMode.Single);
+
     }
 }
