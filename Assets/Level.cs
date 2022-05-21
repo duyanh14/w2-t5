@@ -15,7 +15,7 @@ public class Level : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Debug.Log("Space key");
-            SceneManager.LoadScene("Home", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("Home");
         }
     }
 }

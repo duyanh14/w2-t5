@@ -22,6 +22,13 @@ public class Spin : MonoBehaviour
 
     void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Spin");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -80,7 +87,7 @@ public class Spin : MonoBehaviour
     {
         Debug.Log("Bạn đã nhận được " + Item[Index-1] + "*" + Index);
 
-        SceneManager.LoadScene("Level "+Index, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Level "+Index);
 
     }
 }
